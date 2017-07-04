@@ -1,0 +1,47 @@
+<head>
+    <link rel="stylesheet" href="stylesheets/views/play.css"/>
+</head>
+
+<% if data :hint %>
+    <div class="alert alert-warning hint-output text-center">
+        The secret code contains digit: <%= data :hint %>
+    </div>
+<% end %>
+
+<% if data :output %>
+    <div class="alert alert-info guess-output text-center">
+        <% (data :output).each_char do |char| %>
+            <% if char == '+' or char == ' ' %>
+                <span class="glyphicon glyphicon-plus"></span>
+            <% end %>
+
+            <% if char == '-' %>
+                <span class="glyphicon glyphicon-minus"></span>
+            <% end %>
+        <% end %>
+    </div>
+<% end %>
+
+<form class="form-code" method="post">
+    <table>
+        <tr>
+            <% (1..4).each do |value| %>
+                <td style="padding: 0 10px">
+                    <input type="text" required name="digit<%= value %>"
+                           autocomplete="off" placeholder="<%= value %>"
+                           class="form-control text-center" pattern="^[1-6]$">
+                </td>
+            <% end %>
+        </tr>
+    </table>
+
+    <button class="btn btn-primary btn-block" type="submit">
+        Guess
+    </button>
+</form>
+
+<% unless data :hint %>
+    <form class="form-hint" action="/hint" method="post">
+        <input type="submit" class="btn btn-danger btn-block" value="Get Hint"/>
+    </form>
+<% end %>

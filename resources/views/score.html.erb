@@ -1,0 +1,35 @@
+<% if data :games %>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nickname</th>
+                <th>Status</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% (data :games).each_with_index do |game, index| %>
+                <tr>
+                    <!-- Sequence number -->
+                    <td><%= index + 1 %></td>
+
+                    <!-- Player's nickname -->
+                    <td><%= game.instance_variable_get(:@nickname) %></td>
+
+                    <!-- Status of the game -->
+                    <% if game.win? %>
+                        <td>Winner</td>
+                    <% else %>
+                        <td>Loser</td>
+                    <% end %>
+
+                    <!-- Player's score -->
+                    <td><%= game.instance_variable_get(:@tries_left) * 100 %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% else %>
+    <h4 class="text-center">No saved scores</h4>
+<% end %>
