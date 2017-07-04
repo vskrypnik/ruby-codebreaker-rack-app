@@ -1,0 +1,30 @@
+<head>
+    <link rel="stylesheet" href="stylesheets/views/result.css"/>
+</head>
+
+<% if (data 'stage') == 'win' %>
+    <div class="alert alert-success alert-lose text-center">
+        Congratulations! You win!
+    </div>
+<% end %>
+
+<% if (data 'stage') == 'lose' %>
+    <div class="alert alert-danger alert-lose text-center">
+        I am sorry... You lose.
+    </div>
+<% end %>
+
+<div class="panel panel-default">
+    <form class="form-save-score" method="post">
+
+        <h5 class="text-center">
+            Do you want to save the score?
+        </h5>
+
+        <div class="clearfix">
+            <a class="btn btn-sm btn-danger" href="/save?response=no">No</a>
+            <a class="btn btn-sm btn-primary" href="/save?response=yes">Yes</a>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,11 @@
+.play-again-div {
+    padding: 5px 0 14px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.btn {
+    width: 48%;
+    float: left;
+    margin: 2px;
+}
